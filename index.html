@@ -14,7 +14,7 @@
 *{box-sizing:border-box}
 body{margin:0;font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:#eef2f6;color:var(--ink);-webkit-font-smoothing:antialiased}
 .page{width:min(100%,620px);margin:0 auto;background:#fff;min-height:100vh}
-.topbar{height:70px;padding:0 18px;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:5;box-shadow:0 8px 20px rgba(7,25,54,.14)}
+.topbar{height:70px;padding:0 18px;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:flex-start;position:sticky;top:0;z-index:5;box-shadow:0 8px 20px rgba(7,25,54,.14)}
 .brand{display:flex;align-items:center;gap:10px}.brand strong{font-size:22px;letter-spacing:.12em}.divider{width:1px;height:34px;background:rgba(255,255,255,.45)}.club{font-size:13px;line-height:1.05}
 .code{font-size:12px;font-weight:700;background:#173660;border-radius:9px;padding:7px 10px;letter-spacing:.03em}
 main{padding:26px 18px 34px}
@@ -35,6 +35,19 @@ section{margin-top:24px}.title{font-size:20px;margin:0 0 12px;color:var(--navy);
 .x{width:26px;height:26px;min-width:26px;border-radius:50%;display:grid;place-items:center;background:var(--navy);color:#fff;font-weight:900}.error span{font-size:13px;line-height:1.35;font-weight:700}
 .tip{margin-top:16px;padding:13px 14px;border-radius:16px;background:#f2f5fa;color:#43516d;font-size:12px;line-height:1.45}
 .note{text-align:center;color:#98a2b3;font-size:10px;margin-top:25px}
+
+.motion-section{margin-top:18px}
+.motion-card{border:1px solid var(--line);border-radius:20px;overflow:hidden;background:#fff;box-shadow:0 8px 24px rgba(7,25,54,.05)}
+.motion-stage{position:relative;background:#f5f6f8;aspect-ratio:1/1;overflow:hidden}
+.motion-stage img{width:100%;height:100%;object-fit:cover;display:block;transition:opacity .35s ease}
+.motion-status{position:absolute;top:12px;left:12px;background:rgba(7,25,54,.86);color:#fff;border-radius:999px;padding:7px 10px;font-size:11px;font-weight:800;letter-spacing:.02em}
+.motion-copy{padding:14px 15px 10px}
+.motion-copy b{font-size:15px;color:var(--navy)}
+.motion-copy p{margin:5px 0 0;font-size:12px;line-height:1.45;color:var(--muted)}
+.motion-nav{display:flex;justify-content:center;gap:7px;padding:4px 12px 14px}
+.motion-dot{width:8px;height:8px;border:0;padding:0;border-radius:50%;background:#d5dae3;cursor:pointer}
+.motion-dot.active{width:22px;border-radius:99px;background:var(--navy2)}
+
 @media(max-width:480px){
   .hero h1{font-size:31px}.muscle-card{grid-template-columns:1fr 155px}.errors{grid-template-columns:1fr}
 }
@@ -47,7 +60,6 @@ section{margin-top:24px}.title{font-size:20px;margin:0 0 12px;color:var(--navy);
 <div class="page">
 <header class="topbar">
   <div class="brand"><strong>UCJC</strong><span class="divider"></span><span class="club">SPORTS<br>CLUB</span></div>
-  <div class="code">MB3015100481</div>
 </header>
 <main>
   <div class="hero">
@@ -65,6 +77,27 @@ section{margin-top:24px}.title{font-size:20px;margin:0 0 12px;color:var(--navy);
       <div class="track"><div class="bar" id="progress"></div></div>
     </div>
   </div>
+
+  <section class="motion-section">
+    <h2 class="title">Movimiento + postura</h2>
+    <div class="motion-card">
+      <div class="motion-stage">
+        <img id="motionImage" src="assets/movement-01.jpg" alt="Secuencia técnica de Leg Extension">
+        <div class="motion-status" id="motionStatus">1 / 5</div>
+      </div>
+      <div class="motion-copy">
+        <b id="motionTitle">Posición inicial</b>
+        <p id="motionText">Espalda apoyada, cadera estable y rodillas alineadas con el eje.</p>
+      </div>
+      <div class="motion-nav" id="motionNav">
+        <button class="motion-dot active" aria-label="Posición 1"></button>
+        <button class="motion-dot" aria-label="Posición 2"></button>
+        <button class="motion-dot" aria-label="Posición 3"></button>
+        <button class="motion-dot" aria-label="Posición 4"></button>
+        <button class="motion-dot" aria-label="Posición 5"></button>
+      </div>
+    </div>
+  </section>
 
   <section>
     <h2 class="title">Cómo hacerlo</h2>
@@ -97,8 +130,38 @@ section{margin-top:24px}.title{font-size:20px;margin:0 0 12px;color:var(--navy);
 </div>
 <script>
 const v=document.getElementById('exerciseVideo'), b=document.getElementById('pauseBtn'), p=document.getElementById('progress');
+v.playbackRate = 0.55;
 b.addEventListener('click',()=>{if(v.paused){v.play();b.textContent='Ⅱ'}else{v.pause();b.textContent='▶'}});
 v.addEventListener('timeupdate',()=>{if(v.duration)p.style.width=((v.currentTime/v.duration)*100)+'%'});
+
+const motionSteps=[{title:'Posición inicial',text:'Espalda apoyada, cadera estable y rodillas alineadas con el eje.',file:'assets/movement-01.jpg'},{title:'Inicio de extensión',text:'Empieza a elevar el rodillo sin impulso y sin mover el torso.',file:'assets/movement-02.jpg'},{title:'Mitad del recorrido',text:'Continúa extendiendo las rodillas con la espalda totalmente apoyada.',file:'assets/movement-03.jpg'},{title:'Extensión',text:'Llega casi al final del recorrido sin bloquear bruscamente las rodillas.',file:'assets/movement-04.jpg'},{title:'Descenso controlado',text:'Baja lentamente hasta volver a la posición inicial sin dejar caer la carga.',file:'assets/movement-05.jpg'}];
+const motionImage=document.getElementById('motionImage');
+const motionTitle=document.getElementById('motionTitle');
+const motionText=document.getElementById('motionText');
+const motionStatus=document.getElementById('motionStatus');
+const motionDots=[...document.querySelectorAll('.motion-dot')];
+let motionIndex=0;
+let motionTimer;
+
+function showMotionStep(index){
+  motionIndex=(index+motionSteps.length)%motionSteps.length;
+  const step=motionSteps[motionIndex];
+  motionImage.style.opacity='0.25';
+  setTimeout(()=>{
+    motionImage.src=step.file;
+    motionTitle.textContent=step.title;
+    motionText.textContent=step.text;
+    motionStatus.textContent=(motionIndex+1)+' / '+motionSteps.length;
+    motionDots.forEach((d,i)=>d.classList.toggle('active',i===motionIndex));
+    motionImage.style.opacity='1';
+  },180);
+}
+function startMotionLoop(){
+  clearInterval(motionTimer);
+  motionTimer=setInterval(()=>showMotionStep(motionIndex+1),2800);
+}
+motionDots.forEach((dot,i)=>dot.addEventListener('click',()=>{showMotionStep(i);startMotionLoop();}));
+startMotionLoop();
 </script>
 </body>
 </html>
