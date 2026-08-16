@@ -12,7 +12,6 @@
   --brand-orange:#ee9800;
   --brand-green:#96bf22;
   --brand-blue:#13a6de;
-  --soft-bg:#f4f5f7;
   --line:#e7eaee;
   --white:#fff;
   --shadow:0 14px 34px rgba(30,40,55,.08);
@@ -41,32 +40,10 @@ body{
   box-shadow:0 8px 18px rgba(30,40,55,.05);
 }
 .topbar-inner{padding:16px 18px 14px}
-.logo-wrap{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-}
-.logo-wrap img{
-  width:min(100%,310px);
-  height:auto;
-  display:block;
-}
-.brand-stripes{
-  display:grid;
-  grid-template-columns:1fr 1fr 1fr;
-  gap:10px;
-  padding:0 18px 14px;
-}
-.brand-stripes span{
-  display:block;
-  height:6px;
-  border-radius:999px;
-}
-.brand-stripes .orange{background:var(--brand-orange)}
-.brand-stripes .green{background:var(--brand-green)}
-.brand-stripes .blue{background:var(--brand-blue)}
+.logo-wrap{display:flex;justify-content:center;align-items:center}
+.logo-wrap img{width:min(100%,310px);height:auto;display:block}
 
-main{padding:24px 18px 38px}
+main{padding:24px 18px 40px}
 
 .hero{
   display:flex;
@@ -98,6 +75,7 @@ main{padding:24px 18px 38px}
   border-radius:999px;
 }
 
+.video-shell{margin-top:4px}
 .video-card{
   position:relative;
   border-radius:24px;
@@ -113,10 +91,6 @@ main{padding:24px 18px 38px}
   object-fit:cover;
   background:#111;
 }
-.video-accent{
-  height:7px;
-  background:linear-gradient(90deg,var(--brand-orange) 0 33.333%, var(--brand-green) 33.333% 66.666%, var(--brand-blue) 66.666% 100%);
-}
 .controls{
   position:absolute;
   left:14px;
@@ -130,7 +104,7 @@ main{padding:24px 18px 38px}
   align-items:center;
   gap:10px;
 }
-.pause{
+.control-btn{
   border:0;
   background:transparent;
   color:var(--brand-gray);
@@ -140,6 +114,16 @@ main{padding:24px 18px 38px}
   padding:0;
   cursor:pointer;
 }
+.control-btn.expand{
+  font-size:19px;
+  font-weight:800;
+  width:30px;
+  height:30px;
+  border-radius:50%;
+  background:#f1f3f5;
+}
+.video-card video{cursor:zoom-in}
+
 .track{
   height:4px;
   background:#d5dbe2;
@@ -153,6 +137,12 @@ main{padding:24px 18px 38px}
   background:linear-gradient(90deg,var(--brand-orange),var(--brand-green),var(--brand-blue));
   border-radius:inherit;
 }
+.expand-note{
+  margin-top:8px;
+  font-size:12px;
+  color:#7b838d;
+  text-align:right;
+}
 
 section{margin-top:26px}
 .section-head{
@@ -162,10 +152,7 @@ section{margin-top:26px}
   margin:0 0 12px;
 }
 .section-dot{
-  width:10px;
-  height:10px;
-  border-radius:50%;
-  flex:0 0 auto;
+  width:10px;height:10px;border-radius:50%;flex:0 0 auto;
 }
 .section-title{
   font-size:20px;
@@ -186,68 +173,77 @@ section{margin-top:26px}
   box-shadow:0 4px 14px rgba(30,40,55,.03);
 }
 .num{
-  width:36px;
-  height:36px;
-  border-radius:50%;
-  display:grid;
-  place-items:center;
-  background:var(--brand-blue);
-  color:#fff;
-  font-weight:800;
+  width:36px;height:36px;border-radius:50%;
+  display:grid;place-items:center;
+  background:var(--brand-blue);color:#fff;font-weight:800;
 }
 .step b{font-size:15px;color:var(--brand-ink)}
 .step p{margin:5px 0 0;color:#6a727c;font-size:13px;line-height:1.45}
 
 .errors{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .error{
-  border:1px solid #f1dfb8;
+  border:1px solid #f3c7c7;
   border-radius:18px;
   padding:14px;
   display:flex;
   gap:10px;
   align-items:flex-start;
-  background:#fffaf1;
+  background:#fff5f5;
 }
 .x{
-  width:26px;
-  height:26px;
-  min-width:26px;
-  border-radius:50%;
-  display:grid;
-  place-items:center;
-  background:var(--brand-orange);
-  color:#fff;
-  font-weight:900;
+  width:26px;height:26px;min-width:26px;border-radius:50%;
+  display:grid;place-items:center;
+  background:#d92d20;color:#fff;font-weight:900;
 }
 .error span{
-  font-size:13px;
-  line-height:1.35;
-  font-weight:700;
-  color:#6a5730;
+  font-size:13px;line-height:1.35;font-weight:700;color:#8a1f1f;
 }
 
 .muscle-card{
-  display:grid;
-  grid-template-columns:1fr 220px;
-  align-items:center;
-  gap:8px;
   border:1px solid #dfe9c6;
-  border-radius:20px;
+  border-radius:22px;
   padding:16px;
   background:#fbfdf7;
 }
-.label{font-size:12px;color:#6f7667}
-.muscle-name{
-  font-size:24px;
-  font-weight:800;
-  margin-top:4px;
-  color:var(--brand-green);
+.muscle-grid{
+  display:grid;
+  grid-template-columns:1fr 230px;
+  align-items:center;
+  gap:10px;
+}
+.muscle-row + .muscle-row{margin-top:12px}
+.label{
+  font-size:12px;
+  color:#6f7667;
+  margin-bottom:4px;
+}
+.legend{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  flex-wrap:wrap;
+}
+.legend-dot{
+  width:10px;height:10px;border-radius:50%;
+  display:inline-block;
+}
+.legend-text{
+  font-size:15px;
+  font-weight:700;
+  color:var(--brand-ink);
 }
 .muscle-card img{
   width:100%;
-  max-height:250px;
+  max-height:285px;
   object-fit:contain;
 }
+.helper{
+  margin-top:10px;
+  font-size:12px;
+  line-height:1.45;
+  color:#7a816f;
+}
+
 .footer-note{
   margin-top:28px;
   text-align:center;
@@ -256,28 +252,25 @@ section{margin-top:26px}
 }
 
 @media(max-width:480px){
+  main{padding:22px 16px 34px}
   .hero{display:block}
   .hero-copy h1{font-size:30px}
   .exercise-chip{display:inline-block;margin-top:12px}
+  .video-shell{margin-left:-8px;margin-right:-8px}
+  .video-card{border-radius:18px}
   .errors{grid-template-columns:1fr}
-  .muscle-card{grid-template-columns:1fr 155px}
-  .brand-stripes{gap:8px}
+  .muscle-grid{grid-template-columns:1fr}
+  .muscle-card img{max-height:260px}
 }
 </style>
 </head>
 <body>
 <div class="page">
-
 <header class="topbar">
   <div class="topbar-inner">
     <div class="logo-wrap">
       <img src="assets/ucjc-sports-club-logo.png" alt="UCJC Sports Club">
     </div>
-  </div>
-  <div class="brand-stripes" aria-hidden="true">
-    <span class="orange"></span>
-    <span class="green"></span>
-    <span class="blue"></span>
   </div>
 </header>
 
@@ -290,15 +283,18 @@ section{margin-top:26px}
     <div class="exercise-chip">Smart Gym NFC</div>
   </div>
 
-  <div class="video-card">
-    <video id="exerciseVideo" autoplay muted loop playsinline preload="auto" poster="assets/leg-extension-ai-poster.jpg">
-      <source src="assets/leg-extension-ai.mp4" type="video/mp4">
-    </video>
-    <div class="controls">
-      <button class="pause" id="pauseBtn" aria-label="Pausar o reproducir">Ⅱ</button>
-      <div class="track"><div class="bar" id="progress"></div></div>
+  <div class="video-shell">
+    <div class="video-card" id="videoCard">
+      <video id="exerciseVideo" autoplay muted loop playsinline preload="auto" poster="assets/leg-extension-ai-poster.jpg">
+        <source src="assets/leg-extension-ai.mp4" type="video/mp4">
+      </video>
+      <div class="controls">
+        <button class="control-btn" id="pauseBtn" aria-label="Pausar o reproducir">Ⅱ</button>
+        <div class="track"><div class="bar" id="progress"></div></div>
+        <button class="control-btn expand" id="expandBtn" aria-label="Ampliar vídeo">⛶</button>
+      </div>
     </div>
-    <div class="video-accent"></div>
+    <div class="expand-note">Toca el vídeo o pulsa ⛶ para verlo a pantalla completa</div>
   </div>
 
   <section>
@@ -324,7 +320,7 @@ section{margin-top:26px}
 
   <section>
     <div class="section-head">
-      <span class="section-dot" style="background: var(--brand-orange);"></span>
+      <span class="section-dot" style="background: #d92d20;"></span>
       <h2 class="section-title">Errores</h2>
     </div>
     <div class="errors">
@@ -339,11 +335,31 @@ section{margin-top:26px}
       <h2 class="section-title">Músculos trabajados</h2>
     </div>
     <div class="muscle-card">
-      <div>
-        <div class="label">Principal</div>
-        <div class="muscle-name">Cuádriceps</div>
+      <div class="muscle-grid">
+        <div>
+          <div class="muscle-row">
+            <div class="label">Principal</div>
+            <div class="legend">
+              <span class="legend-dot" style="background:#e53935;"></span>
+              <span class="legend-text">Cuádriceps</span>
+            </div>
+          </div>
+
+          <div class="muscle-row">
+            <div class="label">Secundarios / estabilizadores</div>
+            <div class="legend">
+              <span class="legend-dot" style="background:#ee9800;"></span>
+              <span class="legend-text">Flexores de cadera</span>
+            </div>
+          </div>
+
+          <div class="helper">
+            En rojo se muestra el trabajo principal del cuádriceps. En naranja, la participación secundaria o estabilizadora más relevante.
+          </div>
+        </div>
+
+        <img src="assets/quadriceps-anatomy-v2.png" alt="Ilustración anatómica con cuádriceps en rojo y flexores de la cadera en naranja">
       </div>
-      <img src="assets/quadriceps-anatomy.png" alt="Referencia anatómica del cuádriceps">
     </div>
   </section>
 
@@ -355,6 +371,7 @@ section{margin-top:26px}
 const video = document.getElementById('exerciseVideo');
 const pauseBtn = document.getElementById('pauseBtn');
 const progress = document.getElementById('progress');
+const expandBtn = document.getElementById('expandBtn');
 
 pauseBtn.addEventListener('click', () => {
   if (video.paused) {
@@ -371,7 +388,23 @@ video.addEventListener('timeupdate', () => {
     progress.style.width = ((video.currentTime / video.duration) * 100) + '%';
   }
 });
-</script>
 
+async function openFullscreenVideo() {
+  try {
+    if (video.requestFullscreen) {
+      await video.requestFullscreen();
+    } else if (video.webkitEnterFullscreen) {
+      video.webkitEnterFullscreen();
+    } else if (video.webkitRequestFullscreen) {
+      await video.webkitRequestFullscreen();
+    }
+  } catch (e) {
+    console.log('No se pudo ampliar el vídeo', e);
+  }
+}
+
+expandBtn.addEventListener('click', openFullscreenVideo);
+video.addEventListener('click', openFullscreenVideo);
+</script>
 </body>
 </html>
