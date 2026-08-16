@@ -3,93 +3,265 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#071936">
-<title>Leg Extension · Sports Club UCJC</title>
+<meta name="theme-color" content="#7a7f86">
+<title>Leg Extension · UCJC Sports Club</title>
 <style>
 :root{
-  --navy:#071936;--navy2:#0e2a59;--ink:#10203d;--muted:#63708a;
-  --line:#e6eaf0;--white:#fff;--shadow:0 12px 32px rgba(7,25,54,.08)
+  --brand-gray:#7a7f86;
+  --brand-ink:#40464d;
+  --brand-orange:#ee9800;
+  --brand-green:#96bf22;
+  --brand-blue:#13a6de;
+  --soft-bg:#f4f5f7;
+  --line:#e7eaee;
+  --white:#fff;
+  --shadow:0 14px 34px rgba(30,40,55,.08);
 }
 *{box-sizing:border-box}
-html{background:#eef2f6}
+html{background:#eef1f4}
 body{
-  margin:0;font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
-  background:#eef2f6;color:var(--ink);-webkit-font-smoothing:antialiased
+  margin:0;
+  font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+  background:#eef1f4;
+  color:var(--brand-ink);
+  -webkit-font-smoothing:antialiased;
 }
-.page{width:min(100%,620px);margin:0 auto;background:#fff;min-height:100vh}
+.page{
+  width:min(100%,620px);
+  margin:0 auto;
+  background:var(--white);
+  min-height:100vh;
+}
 .topbar{
-  height:70px;padding:0 18px;background:var(--navy);color:#fff;display:flex;align-items:center;
-  position:sticky;top:0;z-index:5;box-shadow:0 8px 20px rgba(7,25,54,.14)
+  background:linear-gradient(180deg,#ffffff 0%, #fbfcfd 100%);
+  position:sticky;
+  top:0;
+  z-index:5;
+  border-bottom:1px solid var(--line);
+  box-shadow:0 8px 18px rgba(30,40,55,.05);
 }
-.brand{display:flex;align-items:center;gap:10px}
-.brand strong{font-size:22px;letter-spacing:.12em}
-.divider{width:1px;height:34px;background:rgba(255,255,255,.45)}
-.club{font-size:13px;line-height:1.05}
-main{padding:26px 18px 38px}
-.hero{margin-bottom:18px}
-.hero h1{font-size:36px;line-height:1;margin:0;color:var(--navy);letter-spacing:-.045em}
-.hero p{font-size:18px;margin:8px 0 0;color:#536079}
+.topbar-inner{padding:16px 18px 14px}
+.logo-wrap{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+.logo-wrap img{
+  width:min(100%,310px);
+  height:auto;
+  display:block;
+}
+.brand-stripes{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:10px;
+  padding:0 18px 14px;
+}
+.brand-stripes span{
+  display:block;
+  height:6px;
+  border-radius:999px;
+}
+.brand-stripes .orange{background:var(--brand-orange)}
+.brand-stripes .green{background:var(--brand-green)}
+.brand-stripes .blue{background:var(--brand-blue)}
+
+main{padding:24px 18px 38px}
+
+.hero{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:18px;
+}
+.hero-copy h1{
+  font-size:34px;
+  line-height:1;
+  margin:0;
+  color:var(--brand-gray);
+  letter-spacing:-.045em;
+}
+.hero-copy p{
+  font-size:18px;
+  margin:8px 0 0;
+  color:#6a727c;
+}
+.exercise-chip{
+  white-space:nowrap;
+  border:1px solid var(--line);
+  background:#f8f9fb;
+  color:var(--brand-gray);
+  font-size:12px;
+  font-weight:700;
+  padding:8px 10px;
+  border-radius:999px;
+}
 
 .video-card{
-  position:relative;border-radius:22px;overflow:hidden;background:#111;
-  box-shadow:var(--shadow);border:1px solid var(--line)
+  position:relative;
+  border-radius:24px;
+  overflow:hidden;
+  background:#111;
+  box-shadow:var(--shadow);
+  border:1px solid var(--line);
 }
 .video-card video{
-  width:100%;display:block;aspect-ratio:16/9;object-fit:cover;background:#111
+  width:100%;
+  display:block;
+  aspect-ratio:16/9;
+  object-fit:cover;
+  background:#111;
+}
+.video-accent{
+  height:7px;
+  background:linear-gradient(90deg,var(--brand-orange) 0 33.333%, var(--brand-green) 33.333% 66.666%, var(--brand-blue) 66.666% 100%);
 }
 .controls{
-  position:absolute;left:14px;right:14px;bottom:13px;background:rgba(255,255,255,.90);
-  backdrop-filter:blur(12px);border-radius:999px;padding:9px 13px;
-  display:flex;align-items:center;gap:10px
+  position:absolute;
+  left:14px;
+  right:14px;
+  bottom:15px;
+  background:rgba(255,255,255,.92);
+  backdrop-filter:blur(12px);
+  border-radius:999px;
+  padding:9px 13px;
+  display:flex;
+  align-items:center;
+  gap:10px;
 }
 .pause{
-  border:0;background:transparent;color:var(--navy);font-size:19px;width:24px;height:24px;
-  padding:0;cursor:pointer
+  border:0;
+  background:transparent;
+  color:var(--brand-gray);
+  font-size:19px;
+  width:24px;
+  height:24px;
+  padding:0;
+  cursor:pointer;
 }
-.track{height:4px;background:#cfd5dd;border-radius:999px;flex:1;overflow:hidden}
-.bar{height:100%;width:0;background:var(--navy2);border-radius:inherit}
+.track{
+  height:4px;
+  background:#d5dbe2;
+  border-radius:999px;
+  flex:1;
+  overflow:hidden;
+}
+.bar{
+  height:100%;
+  width:0;
+  background:linear-gradient(90deg,var(--brand-orange),var(--brand-green),var(--brand-blue));
+  border-radius:inherit;
+}
 
 section{margin-top:26px}
-.title{font-size:20px;margin:0 0 12px;color:var(--navy);letter-spacing:-.02em}
+.section-head{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin:0 0 12px;
+}
+.section-dot{
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  flex:0 0 auto;
+}
+.section-title{
+  font-size:20px;
+  margin:0;
+  color:var(--brand-gray);
+  letter-spacing:-.02em;
+}
 
 .steps{display:grid;gap:10px}
 .step{
-  display:grid;grid-template-columns:38px 1fr;gap:12px;padding:14px;
-  border:1px solid var(--line);border-radius:18px;background:#fff
+  display:grid;
+  grid-template-columns:38px 1fr;
+  gap:12px;
+  padding:14px;
+  border:1px solid var(--line);
+  border-radius:18px;
+  background:#fff;
+  box-shadow:0 4px 14px rgba(30,40,55,.03);
 }
 .num{
-  width:36px;height:36px;border-radius:50%;display:grid;place-items:center;
-  background:var(--navy);color:#fff;font-weight:800
+  width:36px;
+  height:36px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:var(--brand-blue);
+  color:#fff;
+  font-weight:800;
 }
-.step b{font-size:15px}
-.step p{margin:5px 0 0;color:var(--muted);font-size:13px;line-height:1.45}
+.step b{font-size:15px;color:var(--brand-ink)}
+.step p{margin:5px 0 0;color:#6a727c;font-size:13px;line-height:1.45}
 
 .errors{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .error{
-  border:1px solid var(--line);border-radius:18px;padding:14px;
-  display:flex;gap:10px;align-items:flex-start;background:#fff
+  border:1px solid #f1dfb8;
+  border-radius:18px;
+  padding:14px;
+  display:flex;
+  gap:10px;
+  align-items:flex-start;
+  background:#fffaf1;
 }
 .x{
-  width:26px;height:26px;min-width:26px;border-radius:50%;display:grid;
-  place-items:center;background:var(--navy);color:#fff;font-weight:900
+  width:26px;
+  height:26px;
+  min-width:26px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:var(--brand-orange);
+  color:#fff;
+  font-weight:900;
 }
-.error span{font-size:13px;line-height:1.35;font-weight:700}
+.error span{
+  font-size:13px;
+  line-height:1.35;
+  font-weight:700;
+  color:#6a5730;
+}
 
 .muscle-card{
-  display:grid;grid-template-columns:1fr 220px;align-items:center;gap:8px;
-  border:1px solid var(--line);border-radius:20px;padding:16px;background:#fff
+  display:grid;
+  grid-template-columns:1fr 220px;
+  align-items:center;
+  gap:8px;
+  border:1px solid #dfe9c6;
+  border-radius:20px;
+  padding:16px;
+  background:#fbfdf7;
 }
-.label{font-size:12px;color:var(--muted)}
-.muscle-name{font-size:24px;font-weight:800;margin-top:4px;color:var(--navy)}
-.muscle-card img{width:100%;max-height:250px;object-fit:contain}
+.label{font-size:12px;color:#6f7667}
+.muscle-name{
+  font-size:24px;
+  font-weight:800;
+  margin-top:4px;
+  color:var(--brand-green);
+}
+.muscle-card img{
+  width:100%;
+  max-height:250px;
+  object-fit:contain;
+}
+.footer-note{
+  margin-top:28px;
+  text-align:center;
+  font-size:11px;
+  color:#8b9198;
+}
 
 @media(max-width:480px){
-  .hero h1{font-size:31px}
+  .hero{display:block}
+  .hero-copy h1{font-size:30px}
+  .exercise-chip{display:inline-block;margin-top:12px}
   .errors{grid-template-columns:1fr}
   .muscle-card{grid-template-columns:1fr 155px}
-}
-@media(max-width:380px){
-  .muscle-card{grid-template-columns:minmax(0,1fr) 96px}
+  .brand-stripes{gap:8px}
 }
 </style>
 </head>
@@ -97,32 +269,43 @@ section{margin-top:26px}
 <div class="page">
 
 <header class="topbar">
-  <div class="brand">
-    <strong>UCJC</strong>
-    <span class="divider"></span>
-    <span class="club">SPORTS<br>CLUB</span>
+  <div class="topbar-inner">
+    <div class="logo-wrap">
+      <img src="assets/ucjc-sports-club-logo.png" alt="UCJC Sports Club">
+    </div>
+  </div>
+  <div class="brand-stripes" aria-hidden="true">
+    <span class="orange"></span>
+    <span class="green"></span>
+    <span class="blue"></span>
   </div>
 </header>
 
 <main>
   <div class="hero">
-    <h1>LEG EXTENSION</h1>
-    <p>Extensión de piernas</p>
+    <div class="hero-copy">
+      <h1>LEG EXTENSION</h1>
+      <p>Extensión de piernas</p>
+    </div>
+    <div class="exercise-chip">Smart Gym NFC</div>
   </div>
 
   <div class="video-card">
-    <video id="exerciseVideo" autoplay muted loop playsinline preload="auto"
-           poster="assets/leg-extension-ai-poster.jpg">
+    <video id="exerciseVideo" autoplay muted loop playsinline preload="auto" poster="assets/leg-extension-ai-poster.jpg">
       <source src="assets/leg-extension-ai.mp4" type="video/mp4">
     </video>
     <div class="controls">
       <button class="pause" id="pauseBtn" aria-label="Pausar o reproducir">Ⅱ</button>
       <div class="track"><div class="bar" id="progress"></div></div>
     </div>
+    <div class="video-accent"></div>
   </div>
 
   <section>
-    <h2 class="title">Cómo hacerlo</h2>
+    <div class="section-head">
+      <span class="section-dot" style="background: var(--brand-blue);"></span>
+      <h2 class="section-title">Cómo hacerlo</h2>
+    </div>
     <div class="steps">
       <div class="step">
         <div class="num">1</div>
@@ -140,7 +323,10 @@ section{margin-top:26px}
   </section>
 
   <section>
-    <h2 class="title">Errores</h2>
+    <div class="section-head">
+      <span class="section-dot" style="background: var(--brand-orange);"></span>
+      <h2 class="section-title">Errores</h2>
+    </div>
     <div class="errors">
       <div class="error"><div class="x">×</div><span>Separar la espalda del respaldo.</span></div>
       <div class="error"><div class="x">×</div><span>Bloquear las rodillas bruscamente arriba.</span></div>
@@ -148,7 +334,10 @@ section{margin-top:26px}
   </section>
 
   <section>
-    <h2 class="title">Músculos trabajados</h2>
+    <div class="section-head">
+      <span class="section-dot" style="background: var(--brand-green);"></span>
+      <h2 class="section-title">Músculos trabajados</h2>
+    </div>
     <div class="muscle-card">
       <div>
         <div class="label">Principal</div>
@@ -157,27 +346,29 @@ section{margin-top:26px}
       <img src="assets/quadriceps-anatomy.png" alt="Referencia anatómica del cuádriceps">
     </div>
   </section>
+
+  <div class="footer-note">UCJC Sports Club · Smart Gym NFC · Prototipo UCJC</div>
 </main>
 </div>
 
 <script>
-const video=document.getElementById('exerciseVideo');
-const pauseBtn=document.getElementById('pauseBtn');
-const progress=document.getElementById('progress');
+const video = document.getElementById('exerciseVideo');
+const pauseBtn = document.getElementById('pauseBtn');
+const progress = document.getElementById('progress');
 
-pauseBtn.addEventListener('click',()=>{
-  if(video.paused){
+pauseBtn.addEventListener('click', () => {
+  if (video.paused) {
     video.play();
-    pauseBtn.textContent='Ⅱ';
-  }else{
+    pauseBtn.textContent = 'Ⅱ';
+  } else {
     video.pause();
-    pauseBtn.textContent='▶';
+    pauseBtn.textContent = '▶';
   }
 });
 
-video.addEventListener('timeupdate',()=>{
-  if(video.duration){
-    progress.style.width=((video.currentTime/video.duration)*100)+'%';
+video.addEventListener('timeupdate', () => {
+  if (video.duration) {
+    progress.style.width = ((video.currentTime / video.duration) * 100) + '%';
   }
 });
 </script>
